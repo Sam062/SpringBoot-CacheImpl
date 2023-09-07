@@ -25,8 +25,8 @@ public class Controller {
 	}
 
 	@PostMapping("/update")
-	public Employee update(Employee emp) {
-		return service.update(emp);
+	public Employee update(@RequestBody Employee emp) {
+		return service.update(emp.getEmpId(), emp);
 	}
 
 	@DeleteMapping("/delete/{id}")
