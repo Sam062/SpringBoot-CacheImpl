@@ -1,0 +1,45 @@
+
+##########################
+Redis cache
+##########################
+
+1. supports 3 operations
+	1. Fetch data from DB to app store
+		- @Cacheable
+	2. Update data in cache while updating in DB
+		- @CachePut
+	3. delete data at cache while deleting at DB
+		- @CacheEvict(..., allEntries=true/false)      allEntries is used for associations 
+		
+	SYNTAX: 
+		@Cache___(value="CACHE_REG", key="#Variable")
+		
+	Example code snippet:
+		@Cacheable(value = "employees", key="#empId")
+		public Employee getEmployee(Integer empId) {
+			return empRepo.findById(empId).orElse(null);
+		}
+		
+	
+	
+2. Region
+	Area/Memory part of cache created for one module
+		Ex-EM-REG. STD-REG
+		
+		
+		
+		
+Steps to implement:
+	1. Add dependency Spring data redis(Access + Driver)
+	2. Add annotation @EnableCaching on top of App starter class
+	3. Add properties under spring 
+		spring.cache.type=redis
+		spring.cache.redis.cache-null-values=true
+		spring.cache.redis.time-to-live=some milliseconds   
+		
+	4. Download Redis and run and get the public URL and port
+		Redis download link
+			https://github.com/microsoftarchive/redis/releases/tag/win-3.2.100
+		Donwload the zip file
+		Open and run- Redis-Server.exe file
+		

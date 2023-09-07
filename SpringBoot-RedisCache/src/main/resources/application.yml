@@ -1,0 +1,23 @@
+server:
+  port: 9695
+spring:
+  cache:
+    type: redis #Mandatory
+    redis: #Optional
+      cache-null-values: true #Store null values as well
+      time-to-live: 60000 #in milliseconds, by Default it will never expire
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/security_learning
+  jpa:
+    properties:
+      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: false
+        hbm2ddl:
+          auto: update
+#          auto: create-drop
+        show_sql: true
+        
+        
